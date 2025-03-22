@@ -49,27 +49,37 @@ async function fetchCollegeSuggestions() {
 }
 
 searchButton.addEventListener("click", async () => {
-  const query = inputBox.value.trim();
-  if (!query) return;
-
-  const encodedCollege = encodeURIComponent(query);
-  const url = `https://api.data.gov/ed/collegescorecard/v1/schools?api_key=${apiKey}&school.name=${encodedCollege}&fields=school.name,latest.cost.avg_net_price.public,latest.cost.avg_net_price.private`;
-
-  try {
-    const response = await fetch(url);
-    if (!response.ok) throw new Error("Network response was not ok");
-
-    const data = await response.json();
-    if (data.results && data.results.length > 0) {
-      const school = data.results[0];
-      let cost = school["latest.cost.avg_net_price.public"] || school["latest.cost.avg_net_price.private"] || "No cost found";
-
-      console.log(`Name: ${school["school.name"]}`);
-      console.log(`Average Net Price: $${cost}`);
-    } else {
-      console.log("No results found");
+    const query = inputBox.value.trim();
+    if (!query) {
+      alert("Please enter a college name before searching.");
+      return;
     }
-  } catch (error) {
-    console.error("Error fetching data:", error);
-  }
-});
+  
+    const encodedCollege = encodeURIComponent(query);
+    localStorage.setItem("collegeQuery", encodedCollege); // Store value
+    
+    const url = `https://api.data.gov/ed/collegescorecard/v1/schools?api_key=${apiKey}&school.name=${encodedCollege}&fields=school.name,latest.cost.avg_net_price.public,latest.cost.avg_net_price.private`;
+  
+    try {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error("Network response was not ok");
+  
+      const data = await response.json();
+      if (data.results && data.results.length > 0) {
+        const school = data.results[0];
+        let cost = school["latest.cost.avg_net_price.public"] || school["latest.cost.avg_net_price.private"] || "No cost found";
+  
+        localStorage.setItem("collegeName", school["school.name"]);
+        localStorage.setItem("collegeCost", cost);
+  
+        // Redirect to results page
+        window.location.href = "results.html";
+      } else {
+        alert("No results found. Try another search.");
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      alert("An error occurred while fetching data. Please try again later.");
+    }
+  });
+  
