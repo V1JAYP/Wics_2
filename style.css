@@ -56,8 +56,8 @@ header{
     align-items: center;
     justify-content: center;
     border-bottom: 5px solid black;
-    background-image: url(./bkgImg.avif);
-    background: white url(./bkgImg.avif) no-repeat block center;
+
+
     background-size: auto;
 }
 
@@ -222,3 +222,4 @@ button .fa-solid{
     from, to { border-color: transparent }
     50% { border-color: mediumaquamarine; }
 }
+
