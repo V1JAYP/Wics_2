@@ -1,15 +1,14 @@
-const collegeName = localStorage.getItem("collegeName");
-const collegeCost = localStorage.getItem("collegeCost");
-
-console.log("College Name:", collegeName);
-console.log("Estimated Cost:", collegeCost);
-
-document.body.innerHTML += `<h2>${collegeName}</h2>`;
-document.body.innerHTML += `<p>Estimated Cost: $${collegeCost}</p>`;
-
-
 document.addEventListener("DOMContentLoaded", function () {
-    var map = L.map('map', {
+    const collegeName = localStorage.getItem("collegeName") ?? "Unknown College";
+    const collegeCost = localStorage.getItem("collegeCost") ?? "N/A";
+
+    console.log("College Name:", collegeName);
+    console.log("Estimated Cost:", collegeCost);
+
+    document.body.insertAdjacentHTML("beforeend", `<h2 class="college1">${collegeName}</h2>`);
+    document.body.insertAdjacentHTML("beforeend", `<p class="cost">Estimated Cost: $${collegeCost}</p>`);
+
+    var map = L.map('map1', {
         minZoom: 3,
         maxZoom: 18,
         maxBounds: [[-90, -180], [90, 180]], // Restricts map panning

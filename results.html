@@ -6,6 +6,7 @@
     <title>College Map</title>
     
     <link rel="stylesheet" href="result.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
     
 </head>
 <body>
@@ -21,15 +22,11 @@
             </header>
         </div>
     </header>
-
-    
-    <div id="map" style="height: 300px; width: 500px;"></div>
-
-    <!-- External Scripts -->
-    <script src="results.js"></script>
+    <div class="map" id="map" style="height: 300px; width: 500px;">
+        <script src="results.js"></script>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
-    <!-- Leaflet Map Initialization -->
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             var map = L.map('map', {
@@ -44,6 +41,16 @@
             }).addTo(map);
         });
     </script>
+
+    
+
+
+
+
+    </div>
+
+    
+    
 
 </body>
 </html>
