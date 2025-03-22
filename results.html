@@ -14,65 +14,31 @@
 
 
 <body>
+
+    <h1>Hello</h1>
     
-  <div class="borderdiv">
-    <div class="firstdiv">
-        <header>
-            <h2 class="maint" style="color: mediumaquamarine ;padding-left:10px;"> TBD</h2>
-            <nav class="navigation">
-                    <a href="#">Home</a>
-                    <a href="#">Reviews</a>
-                </nav>
-    
-            
-            
-            
-            
-            </header>
-    </div>
-  </div>
-  <div class="typewriter">
-    <h1 style="text-align:center;"> Welcome to Financial Voyage Incorporation.</h1>
+    <!--Map container-->
+    <div id="map" style="height: 300px; width: 500px;"></div>
 
+    <!-- External Scripts -->
+    <script src="results.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
-  </div>
-  <div class="search-box">
-    <div class="row">
-    <input class="input-se"type="text" id="input-box" placeholder="Search Colleges" autocomplete="off">
-    <button id="search-btn" class="search">search</button>
+    <!-- Leaflet Map Initialization -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var map = L.map('map', {
+                minZoom: 3,
+                maxZoom: 18,
+                maxBounds: [[-90, -180], [90, 180]], // Restricts map panning
+                maxBoundsViscosity: 1.0
+            }).setView([27.169802, 17.89216], 2);
 
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap'
+            }).addTo(map);
+        });
+    </script>
 
-
-    </div>
-    <div class="result-box">
-        
-
-
-
-    </div>
-
-
-  </div>
-  
-
-  <div class="divbody">
-    <div class="reviews1">
-      <p class="preview1"> vfjblfjdbvhbfdbhvhjdvbjhvfdjvfdjhvfdjbjvbfdjbvjhfdbjfvdbjbfdjvbjfdbjvhfdbjvfhdbhjvbjhvjfdbjvfhbdjhvbdjbvjdhbvjhdfb</p>
-    </div>
-    <div class="reviews2">
-      <p>dvbhjfbjfbdjknvfdbjbvujdbvhjdfkbvdhjfbvjfbdjvbjkfdb</p>
-  
-    </div>
-    <div class="reviews3">
-        <p>fjvnkfnjfnjbgjgbj</p>
-    </div>
-    
-
-
-  </div>
-
-  <div class="slider">
-
-
-  </div>
-  </body>
+</body>
+</html>
