@@ -19,7 +19,7 @@ header{
     z-index:99;
 }
 .navigation a{
-    display:inline-block;
+    display:fixed;
     padding:10px 20px;
     background:transparent;
     border: 2px solid #fff;
@@ -37,19 +37,28 @@ header{
 .navigation a:hover{
     background-color:white;
     
-}
-.firstdiv {
-    
-    background-color: skyblue;
-}
+}    
 
 .borderdiv{
     background-color: white;;
     width:auto;
     height:60px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    
-    
+}
+
+.fixed{
+    display: fixed;
+    width: 100%;
+}
+
+.main {
+    height: 70vh;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 5px solid black;
+    background-image: url(./bkgImg.avif);
+    background: white url(./bkgImg.avif) no-repeat block center;
+    background-size: auto;
 }
 
 @media (max-width: 768px) {
@@ -69,7 +78,7 @@ header{
 .search-box{
     width: 600px;
     background: white;
-    margin:200px auto 0;
+    margin:100px auto 100px;
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -123,14 +132,14 @@ button .fa-solid{
     padding: 15px 10px;
 
 }
-.result-box ul li{
+.result-box p{
     list-style:none;
     border-radius:3px;
     padding:15px 10px;
     cursor:pointer;
 
 }
-.result-box ul li:hover{
+.result-box p:hover{
     background: #B5EFD1;
 }
 .reviews1{
@@ -170,7 +179,7 @@ button .fa-solid{
     display:inline-block;
 }
 
-.divbody{
+.rbody{
     height:470px;
 }
 .reviews3{
@@ -201,13 +210,13 @@ button .fa-solid{
     margin:0 auto;
     letter-spacing: .15em;
     animation: 
-    typing 3.5s steps(40, end),
-    blink-caret .75s step-end infinite;
+        typing 3.5s steps(40, end),
+        blink-caret .75s step-end infinite;
 }
 
 @keyframes typing{
-    from { width: 30 }
-    to { width: 50% }
+    from { width: 0 }
+    to { width: 100%; }
 }
 @keyframes blink-caret {
     from, to { border-color: transparent }
