@@ -169,6 +169,10 @@ button .fa-solid{
     margin-top: 30px;;
     display:inline-block;
 }
+
+.divbody{
+    height:470px;
+}
 .reviews3{
     position: relative;
     width: 400px;
@@ -184,9 +188,7 @@ button .fa-solid{
     display:flex;
     overflow:auto;
     margin-left:100px;
-    margin-top: 30px;;
-}
-.divbody{
-    height:470px;
+    margin-top: 30px;
+    display:inline-block;
 }
 
