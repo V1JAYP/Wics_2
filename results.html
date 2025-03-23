@@ -4,34 +4,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>College Map</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    
+    <link rel="stylesheet" href="result.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    
 </head>
 <body>
 
-    <h1>Hello</h1>
+    <header>
+        <div class="borderdiv fixed">
+            <header>
+            <h2 style="color: mediumaquamarine ;padding-left:10px;">UniCost</h2>
+            <nav class="navigation">
+                <a href="index.html">Home</a>
+                <a href="#">Reviews</a>
+            </nav>    
+            </header>
+        </div>
+    </header>
+    <!-- <script>
+        let collegeName = "abc";
+        document.getElementById("college-name").innerHTML = collegeName
+    </script> -->
+    <h1 id="college-name" style="margin-top:100px;"></h1>
+    <div class="container">
+        <div class="map" id="map" style="height: 700px; width: 500px;">
+        </div>
+        <div class="buttons">
+            <form action="/action_page.php">
+                <label for="fname" >Scholarship:</label>
+                <input type="text" id="scholarship" name="fname" class="num2"><br><br>
+                <label for="lname">inflation rate:</label>
+                <input type="text" id="inflation" name="lname" class="num2"><br><br>
+                <label for="fname">Savings Amount:</label>
+                <input type="text" id="SavingAmount" name="fname" class="num2"><br><br>
+                <label for="lname">intrest rate:</label>
+                <input type="text" id="intrestrate" name="lname" class="num2"><br><br>
+                <label for="lname">Yearly Salary After Taxes:</label>
+                <input type="text" id="salary" name="lname" class="num2"><br><br>
+                <button class="submit" role="button">Submit</button>
+            </form>
+
+        </div>
+        <div class="result2">
+            <h1 id="college-name"></h1>
+            <div style="text-align: center;">
+                <label>Results</label><br>
+                <div id="result-display">
+                    </div>
+            </div>
+        </div>
+    </div>
     
-    <!--Map container-->
-    <div id="map" style="height: 300px; width: 500px;"></div>
-
-    <!-- External Scripts -->
     <script src="results.js"></script>
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
-    <!-- Leaflet Map Initialization -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var map = L.map('map', {
-                minZoom: 3,
-                maxZoom: 18,
-                maxBounds: [[-90, -180], [90, 180]], // Restricts map panning
-                maxBoundsViscosity: 1.0
-            }).setView([27.169802, 17.89216], 2);
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    
+    
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                var map = L.map('map', {
+                    minZoom: 3,
+                    maxZoom: 18,
+                    maxBounds: [[-90, -180], [90, 180]], // Restricts map panning
+                    maxBoundsViscosity: 1.0
+                }).setView([27.169802, 17.89216], 2);
+    
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap'
+                }).addTo(map);
+            });
+        </script>
 
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '© OpenStreetMap'
-            }).addTo(map);
-        });
-    </script>
+    
+    
 
 </body>
 </html>

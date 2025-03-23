@@ -1,0 +1,233 @@
+/* styles.css */
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    padding-bottom:20px;
+    padding-top:auto;
+    padding-right:10px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    align-items:center;
+    z-index:99;
+}
+.navigation a{
+    display:inline-block;
+    padding:10px 20px;
+    background:transparent;
+    border: 2px solid #fff;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 1em;
+    color: black;
+    font-weight:500;
+    margin:0 10px;
+    transition: background 0.3s, color 0.3s;
+    background-color: mediumaquamarine;
+
+}
+
+.navigation a:hover{
+    background-color:white;
+}     
+
+.borderdiv{
+    background-color: white;;
+    width:auto;
+    height:60px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.fixed{
+    display: fixed;
+    width: 100%;
+}
+
+.map{
+    position: relative;
+    width: 500px;
+    height: 700px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0,0,0,.5);
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    overflow:auto;
+    margin-left:30px;
+    margin-top: 30px;
+    display:inline-block;
+    background-color: white;
+}
+.c2{
+    display:inline-block;
+
+}
+.buttons {
+    width: 280px; /* Slightly wider for better label spacing */
+    padding: 30px;
+    background: linear-gradient(135deg, #1c2833, #2c3e50); /* Dark, metallic gradient */
+    border-radius: 12px;
+    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.4), -4px -4px 10px rgba(45, 62, 80, 0.2); /* Subtle inner glow */
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 30px;
+    position: relative; /* For pseudo-elements */
+    overflow: hidden; /* Clip any overflow from pseudo-elements */
+}
+
+.buttons::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01)); /* Subtle light overlay */
+    z-index: 0;
+    pointer-events: none; /* Make it non-interactive */
+    border-radius: 14px;
+}
+
+.buttons label {
+    display: block;
+    color: #a8b9c9; /* Light, almost neon blue-grey */
+    font-weight: 500;
+    margin: 10px 0 5px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Add a subtle text glow */
+    font-size: 1.1em; /* slightly bigger label */
+}
+
+.buttons input[type="number"],
+.buttons select {
+    width: calc(100% - 12px); /* Adjust width to fit inside padding */
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #4e6070;
+    border-radius: 6px;
+    background-color: #34495e;
+    color: #e0e0e0;
+    font-size: 1em;
+    outline: none;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.3); /* Add an inset shadow for depth */
+}
+
+.buttons input[type="number"]:focus,
+.buttons select:focus {
+    border-color: #64b5f6; /* Highlight on focus */
+    box-shadow: 0 0 8px rgba(100, 181, 246, 0.5);
+}
+
+.buttons .submit {
+    font-size: 1.1em;
+    font-weight: 600;
+    padding: 12px 25px;
+    background: linear-gradient(to right, #64b5f6, #42a5f5); /* Gradient button */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+    width: calc(100% - 12px);
+    margin-top: 20px;
+}
+
+.buttons .submit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+.container {
+    display: flex; /* Use flexbox for layout */
+    margin-top: 80px; /* Add margin to avoid header overlap */
+}
+label{
+    display:block;
+    color: black;
+    font-weight:500;
+    margin: 5px 0;
+}
+.num2{
+    margin-top:10px;
+    margin-right:40px
+}
+.submit{
+    font-size: 16px;
+    font-weight: 200;
+    letter-spacing: 1px;
+    padding: 13px 20px 13px;
+    outline: 0;
+    border: 1px solid black;
+    cursor: pointer;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    margin-top: 20px;
+}
+
+.submit:after {
+    content: "";
+    background-color: #ffe54c;
+    width: 100%;
+    z-index: -1;
+    position: absolute;
+    height: 100%;
+    top: 7px;
+    left: 7px;
+    transition: 0.2s;
+}
+/* styles.css (Add or modify the following) */
+.result2 {
+    width: 280px; /* Same width as buttons */
+    padding: 30px;
+    background: linear-gradient(135deg, #1c2833, #2c3e50);
+    border-radius: 12px;
+    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.4), -4px -4px 10px rgba(45, 62, 80, 0.2);
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 30px; /* Same margin as buttons */
+    position: relative;
+    overflow: hidden;
+}
+
+.result2::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+    z-index: 0;
+    pointer-events: none;
+    border-radius: 14px;
+}
+
+.result2 label {
+    display: block;
+    color: #a8b9c9;
+    font-weight: 500;
+    margin: 10px 0 5px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    font-size: 1.1em;
+}
+
+#result-display {
+    color: #e0e0e0;
+    padding: 10px;
+    margin-top:20px;
+    text-align: left;
+}
+
