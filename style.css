@@ -265,3 +265,6 @@ button .fa-solid{
     from, to { border-color: transparent }
     50% { border-color: mediumaquamarine; }
 }
+.descBox:hover{
+    transform:scale(1.1);
+}
