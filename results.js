@@ -27,17 +27,17 @@ let submitButton = document.querySelector(".submit");
 
 // Event listener for form submit
 submitButton.addEventListener("click", function (event) {
-    event.preventDefault(); // Prevent default form submission
+    event.preventDefault(); 
 
     // Get values from input fields, or use defaults
     let salary = parseFloat(salaryInput.value) || 0;
     let savings = parseFloat(savingsInput.value) || 0;
-    let scholarshipPercent = parseFloat(scholarshipInput.value) / 100 || 0.1; // Convert to decimal, default 10%
-    let inflationRate = parseFloat(inflationInput.value) / 100 || 0.028; // Convert to decimal, default 2.8%
-    let loanInterestRate = parseFloat(interestRateInput.value) / 100 || 0.0653; // Convert to decimal, default 6.53%
-    let savingsInterestRate = parseFloat(interestRateInput.value) / 100 || 0.0492; // Convert to decimal, default 4.92%
+    let scholarshipPercent = 0.1; 
+    let inflationRate = parseFloat(inflationInput.value) / 100 || 0.028; 
+    let loanInterestRate = parseFloat(interestRateInput.value) / 100 || 0.0653; 
+    let savingsInterestRate = parseFloat(interestRateInput.value) / 100 || 0.0492; 
 
-    let scholarshipAmount = collegeCost * scholarshipPercent;
+    let scholarshipAmount = parseFloat(scholarshipInput.value)||collegeCost * scholarshipPercent;
 
     // Function to calculate compound interest
     function calculateCompoundInterest(principal, rate, years) {
@@ -52,12 +52,10 @@ submitButton.addEventListener("click", function (event) {
         return totalYearlyCost - scholarshipAmount;
     }
 
-    // Variable to keep track of total loan amount
     let totalLoanAmount = 0;
     let resultDisplay = document.getElementById("result-display");
     let allYearCostBreakDown = "";
 
-    // Process each year
     for (let year = 1; year <= 4; year++) {
         console.log(`\nYear ${year}:`);
 
@@ -68,7 +66,7 @@ submitButton.addEventListener("click", function (event) {
 
         adjustedCost -= availableFunds;
 
-        allYearCostBreakDown += `<p>Year ${year} Cost Breakdown:</p>`;
+        allYearCostBreakDown += `<h2>Year ${year} Cost Breakdown:</h2>`;
         allYearCostBreakDown += `<p>  Tuition: $${collegeCost.toFixed(2)}</p>`;
         allYearCostBreakDown += `<p>  Room and Board: $${roomAndBoards.toFixed(2)}</p>`;
         allYearCostBreakDown += `<p>  Books and Supplies: $${inflatedBooks.toFixed(2)}</p>`;
@@ -92,7 +90,6 @@ submitButton.addEventListener("click", function (event) {
         }
     }
 
-    // Total loan and interest after 4 years
     allYearCostBreakDown += `<p>Total loan to pay over 4 years: $${totalLoanAmount.toFixed(2)}</p>`;
     let totalAmountToRepay = totalLoanAmount * Math.pow(1 + loanInterestRate, 4);
     allYearCostBreakDown += `<p>Total amount to repay with interest: $${totalAmountToRepay.toFixed(2)}</p>`;
