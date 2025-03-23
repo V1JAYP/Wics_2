@@ -4,34 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>College Map</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    
+    <link rel="stylesheet" href="result.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    
 </head>
 <body>
 
-    <h1>Hello</h1>
-    
-    <!--Map container-->
-    <div id="map" style="height: 300px; width: 500px;"></div>
-
-    <!-- External Scripts -->
+    <header>
+        <div class="borderdiv fixed">
+            <header>
+            <h2 style="color: mediumaquamarine ;padding-left:10px;">TBD</h2>
+            <nav class="navigation">
+                <a href="#">Home</a>
+                <a href="#">Reviews</a>
+            </nav>    
+            </header>
+        </div>
+    </header>
+    <div class="container">
+        <div class="map" id="map" style="height: 700px; width: 500px;">
+        </div>
+    </div>
     <script src="results.js"></script>
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    
+    
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                var map = L.map('map', {
+                    minZoom: 3,
+                    maxZoom: 18,
+                    maxBounds: [[-90, -180], [90, 180]], // Restricts map panning
+                    maxBoundsViscosity: 1.0
+                }).setView([27.169802, 17.89216], 2);
+    
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap'
+                }).addTo(map);
+            });
+        </script>
 
-    <!-- Leaflet Map Initialization -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var map = L.map('map', {
-                minZoom: 3,
-                maxZoom: 18,
-                maxBounds: [[-90, -180], [90, 180]], // Restricts map panning
-                maxBoundsViscosity: 1.0
-            }).setView([27.169802, 17.89216], 2);
-
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '© OpenStreetMap'
-            }).addTo(map);
-        });
-    </script>
+    
+    
 
 </body>
 </html>
