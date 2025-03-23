@@ -5,11 +5,7 @@ let booksAndSupplie = parseFloat(localStorage.getItem("booksAndSupplies"));
 let otherExpense = parseFloat(localStorage.getItem("otherExpenses"));
 let lats = parseFloat(localStorage.getItem("lat"));
 let longs = parseFloat(localStorage.getItem("long"));
-let scholarshipAmount = collegeCost * 0.1;
-let inflationRate = 0.028;
-let loanInterestRate = 0.0653;
-let savingsInterestRate = 0.0492;
-let geoapi = `7c6035dcefde4bac9fbcd7ac67ee375d`
+let geoapi = `7c6035dcefde4bac9fbcd7ac67ee375d`;
 
 console.log("College Name:", collegeName);
 console.log("Estimated Cost:", collegeCost);
@@ -19,77 +15,94 @@ console.log("Other Expenses:", otherExpense);
 console.log("Latitude:", lats);
 console.log("Longitude:", longs);
 
-let salary = parseFloat(prompt("salary"));
-let savings = parseFloat(prompt("savings"));
+// Get input elements
+let salaryInput = document.getElementById("salary");
+let savingsInput = document.getElementById("SavingAmount");
+let scholarshipInput = document.getElementById("scholarship");
+let inflationInput = document.getElementById("inflation");
+let interestRateInput = document.getElementById("intrestrate");
 
-//document.getElementById("myElement").innerHTML = "<h1>This is a Heading</h1><p>This is a paragraph of text.</p>";
-// Function to calculate compound interest
-function calculateCompoundInterest(principal, rate, years) {
-    return principal * Math.pow(1 + rate, years) - principal;
-}
+// Get form submit button
+let submitButton = document.querySelector(".submit");
 
-// Function to calculate yearly costs considering inflation and scholarship
-function calculateYearlyCost(year) {
-    let inflatedBooks = booksAndSupplie * Math.pow(1 + inflationRate, year -1);
-    let inflatedOther = otherExpense * Math.pow(1 + inflationRate, year -1);
-    let totalYearlyCost = collegeCost + roomAndBoards + inflatedBooks + inflatedOther;
-    return totalYearlyCost - scholarshipAmount;
-}
+// Event listener for form submit
+submitButton.addEventListener("click", function (event) {
+    event.preventDefault(); // Prevent default form submission
 
-// Variable to keep track of total loan amount
-let totalLoanAmount = 0;
+    // Get values from input fields, or use defaults
+    let salary = parseFloat(salaryInput.value) || 0;
+    let savings = parseFloat(savingsInput.value) || 0;
+    let scholarshipPercent = parseFloat(scholarshipInput.value) / 100 || 0.1; // Convert to decimal, default 10%
+    let inflationRate = parseFloat(inflationInput.value) / 100 || 0.028; // Convert to decimal, default 2.8%
+    let loanInterestRate = parseFloat(interestRateInput.value) / 100 || 0.0653; // Convert to decimal, default 6.53%
+    let savingsInterestRate = parseFloat(interestRateInput.value) / 100 || 0.0492; // Convert to decimal, default 4.92%
 
-// Process each year
-for (let year = 1; year <= 4; year++) {
-    console.log(`\nYear ${year}:`);
+    let scholarshipAmount = collegeCost * scholarshipPercent;
 
-    let inflatedBooks = booksAndSupplie * Math.pow(1 + inflationRate, year -1);
-    let inflatedOther = otherExpense * Math.pow(1 + inflationRate, year -1);
-    let adjustedCost = calculateYearlyCost(year);
-    let availableFunds = savings + salary;
-
-    adjustedCost -= availableFunds;
-
-    if (adjustedCost > 0) {
-        let loanForYear = adjustedCost;
-        totalLoanAmount += loanForYear;
-
-        document.body.innerHTML += `<p>You need to borrow ${loanForYear.toFixed(2)} for Year ${year}.`
-        document.body.innerHTML +=`<h2>Year ${year} Cost Breakdown:</h2>`
-        document.body.innerHTML +=`<p>  Tuition: $${collegeCost.toFixed(2)}</p>`
-        document.body.innerHTML +=`<p>  Room and Board: $${roomAndBoards.toFixed(2)}</p>`
-        document.body.innerHTML +=`<p>  Books and Supplies: $${inflatedBooks.toFixed(2)}</p>`
-        document.body.innerHTML +=`<p>  Other Expenses: $${inflatedOther.toFixed(2)}</p>`
-        document.body.innerHTML +=`<p>  Scholarship: $${scholarshipAmount.toFixed(2)}</p>`
-        document.body.innerHTML +=`<p>  Total Cost: $${(collegeCost + roomAndBoards + inflatedBooks + inflatedOther - scholarshipAmount).toFixed(2)}</p>`
-        document.body.innerHTML +=`<p>  Available Funds: $${availableFunds.toFixed(2)}</p>`
-        document.body.innerHTML +=`<p>  Loan Amount: $${loanForYear.toFixed(2)}</p>`
-
-        savings += calculateCompoundInterest(savings, savingsInterestRate, 1);
-    } else {
-        document.body.innerHTML += `<p>No loan needed for Year ${year}. Your funds cover the cost.</p>`;
-        document.body.innerHTML += `<h2>Year ${year} Cost Breakdown:</h2>`;
-        document.body.innerHTML += `<p>  Tuition: $${collegeCost.toFixed(2)}</p>`;
-        document.body.innerHTML += `<p>  Room and Board: $${roomAndBoards.toFixed(2)}</p>`;
-        document.body.innerHTML += `<p>  Books and Supplies: $${inflatedBooks.toFixed(2)}</p>`;
-        document.body.innerHTML += `<p>  Other Expenses: $${inflatedOther.toFixed(2)}</p>`;
-        document.body.innerHTML += `<p>  Scholarship: $${scholarshipAmount.toFixed(2)}</p>`;
-        document.body.innerHTML += `<p>  Total Cost: $${(collegeCost + roomAndBoards + inflatedBooks + inflatedOther - scholarshipAmount).toFixed(2)}</p>`;
-        document.body.innerHTML += `<p>  Available Funds: $${availableFunds.toFixed(2)}</p>`;
-        document.body.innerHTML += `<p>  Loan Amount: $0.00</p>`;        
-
-        savings += calculateCompoundInterest(savings, savingsInterestRate, 1);
+    // Function to calculate compound interest
+    function calculateCompoundInterest(principal, rate, years) {
+        return principal * Math.pow(1 + rate, years) - principal;
     }
-}
 
-// Total loan and interest after 4 years
-document.body.innerHTML += `<p>Total loan to pay over 4 years: $${totalLoanAmount.toFixed(2)}</p>`;
-let totalAmountToRepay = totalLoanAmount * Math.pow(1 + loanInterestRate, 4);
-document.body.innerHTML += `<p>Total amount to repay with interest: $${totalAmountToRepay.toFixed(2)}</p>`;
+    // Function to calculate yearly costs considering inflation and scholarship
+    function calculateYearlyCost(year) {
+        let inflatedBooks = booksAndSupplie * Math.pow(1 + inflationRate, year - 1);
+        let inflatedOther = otherExpense * Math.pow(1 + inflationRate, year - 1);
+        let totalYearlyCost = collegeCost + roomAndBoards + inflatedBooks + inflatedOther;
+        return totalYearlyCost - scholarshipAmount;
+    }
 
-collegeNameElement = document.getElementById('college-name')
-//console.log(collegeNameElement)
+    // Variable to keep track of total loan amount
+    let totalLoanAmount = 0;
+    let resultDisplay = document.getElementById("result-display");
+    let allYearCostBreakDown = "";
+
+    // Process each year
+    for (let year = 1; year <= 4; year++) {
+        console.log(`\nYear ${year}:`);
+
+        let inflatedBooks = booksAndSupplie * Math.pow(1 + inflationRate, year - 1);
+        let inflatedOther = otherExpense * Math.pow(1 + inflationRate, year - 1);
+        let adjustedCost = calculateYearlyCost(year);
+        let availableFunds = savings + salary;
+
+        adjustedCost -= availableFunds;
+
+        allYearCostBreakDown += `<p>Year ${year} Cost Breakdown:</p>`;
+        allYearCostBreakDown += `<p>  Tuition: $${collegeCost.toFixed(2)}</p>`;
+        allYearCostBreakDown += `<p>  Room and Board: $${roomAndBoards.toFixed(2)}</p>`;
+        allYearCostBreakDown += `<p>  Books and Supplies: $${inflatedBooks.toFixed(2)}</p>`;
+        allYearCostBreakDown += `<p>  Other Expenses: $${inflatedOther.toFixed(2)}</p>`;
+        allYearCostBreakDown += `<p>  Scholarship: $${scholarshipAmount.toFixed(2)}</p>`;
+        allYearCostBreakDown += `<p>  Total Cost: $${(collegeCost + roomAndBoards + inflatedBooks + inflatedOther - scholarshipAmount).toFixed(2)}</p>`;
+        allYearCostBreakDown += `<p>  Available Funds: $${availableFunds.toFixed(2)}</p>`;
+
+        if (adjustedCost > 0) {
+            let loanForYear = adjustedCost;
+            totalLoanAmount += loanForYear;
+
+            allYearCostBreakDown += `<p>  Loan Amount: $${loanForYear.toFixed(2)}</p>`;
+            allYearCostBreakDown += `<p>You need to borrow $${loanForYear.toFixed(2)} for Year ${year}.</p>`;
+
+            savings += calculateCompoundInterest(savings, savingsInterestRate, 1);
+        } else {
+            allYearCostBreakDown += `<p>  Loan Amount: $0.00</p>`;
+            allYearCostBreakDown += `<p>No loan needed for Year ${year}. Your funds cover the cost.</p>`;
+            savings += calculateCompoundInterest(savings, savingsInterestRate, 1);
+        }
+    }
+
+    // Total loan and interest after 4 years
+    allYearCostBreakDown += `<p>Total loan to pay over 4 years: $${totalLoanAmount.toFixed(2)}</p>`;
+    let totalAmountToRepay = totalLoanAmount * Math.pow(1 + loanInterestRate, 4);
+    allYearCostBreakDown += `<p>Total amount to repay with interest: $${totalAmountToRepay.toFixed(2)}</p>`;
+
+    resultDisplay.innerHTML = allYearCostBreakDown;
+});
+
+collegeNameElement = document.getElementById('college-name');
 collegeNameElement.innerHTML = `<p>${collegeName}<p>`;
+
 
 document.addEventListener("DOMContentLoaded", function () {
     var greenIcon = new L.Icon({

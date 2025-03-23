@@ -190,7 +190,7 @@ label{
 }
 /* styles.css (Add or modify the following) */
 .result2 {
-    width: 280px; /* Same width as buttons */
+    width: 800px; /* Same width as buttons */
     padding: 30px;
     background: linear-gradient(135deg, #1c2833, #2c3e50);
     border-radius: 12px;
