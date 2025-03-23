@@ -52,13 +52,55 @@ header{
 }
 
 .main {
-    height: 70vh;
+    display: flex;
+    height: 100vh;
     align-items: center;
     justify-content: center;
     border-bottom: 5px solid black;
+    background: rgb(191,224,215);   
+    background: radial-gradient(circle, rgba(191,224,215,1) 0%, rgba(141,203,188,1) 100%);
+    flex-direction: column;
+}
 
+.descDiv {
+    display: flex;
+    height: 75vh;
+    border-bottom: 5px solid black;
+    background: rgb(62,113,80);
+    background: radial-gradient(circle, rgba(62,113,80,1) 0%, rgba(9,121,54,1) 50%, rgba(39,150,119,1) 100%);  
+}
 
-    background-size: auto;
+.descBox{
+    width: 40vw;
+    height: 60vh;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0,0,0,.5);
+    box-sizing: box-border;
+    margin: auto 5vh;
+    display:flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    background-color: white;
+    transition:1s;
+}
+
+.descText {
+    margin: 2vh 2vw;
+}
+
+.descHead {
+    font-size: 2em;
+    font-weight: bold;
+    margin: 2vh 2vw;
+}
+
+.descText {
+    font-size: 1.6em;
+    line-height: normal;
 }
 
 @media (max-width: 768px) {
@@ -78,16 +120,21 @@ header{
 .search-box{
     width: 600px;
     background: white;
-    margin:100px auto 100px;
+    margin-top: 4vh;
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    max-height:300px;
+    overflow:hidden;
 }
 .row{
     display:flex;
     align-items:center;
     padding:10px 20px;
+    overflow-x:auto;
+    
 }
-.input-se{
+
+.input-se   {
     flex:1;
     height:50px;
     background: transparent;
@@ -95,13 +142,13 @@ header{
     outline: 0;
     font-size:18px;
     color: mediumaquamarine;
+    margin-right:10px;
 
 }
-.search{
+.search {
     background:transparent;
     border:0;
     outline:0;
-    display:inline-block;
     padding:10px 20px;
     background:transparent;
     border: 2px solid #fff;
@@ -137,6 +184,7 @@ button .fa-solid{
     border-radius:3px;
     padding:15px 10px;
     cursor:pointer;
+    
 
 }
 .result-box p:hover{
@@ -145,7 +193,7 @@ button .fa-solid{
 .reviews1{
     position: relative;
     width: 400px;
-    height:440px;
+    height:200px;
     background: transparent;
     border: 2px solid rgba(255, 255, 255, .5);
     border-radius: 20px;
@@ -159,11 +207,13 @@ button .fa-solid{
     margin-left:30px;
     margin-top: 30px;;
     display:inline-block;
+    background-color: white;
 }
+
 .reviews2{
     position: relative;
     width: 400px;
-    height:440px;
+    height:200px;
     background: transparent;
     border: 2px solid rgba(255, 255, 255, .5);
     border-radius: 20px;
@@ -180,12 +230,15 @@ button .fa-solid{
 }
 
 .rbody{
-    height:470px;
+    height: 40vh;
+    display: flex;
+    align-content: center;
+    justify-content: center;
 }
 .reviews3{
     position: relative;
     width: 400px;
-    height:440px;
+    height:200px;
     background: transparent;
     border: 2px solid rgba(255, 255, 255, .5);
     border-radius: 20px;
@@ -200,10 +253,7 @@ button .fa-solid{
     margin-top: 30px;
     display:inline-block;
 }
-.typewriter h1{
-    margin-top:20px;
-    margin-left:60px;
-    position:center;
+.typewriter h1{ 
     overflow:hidden;
     border-right:.15em solid mediumaquamarine;
     white-space:nowrap;
@@ -223,3 +273,17 @@ button .fa-solid{
     50% { border-color: mediumaquamarine; }
 }
 
+
+
+.descBox:hover{
+    transform:scale(1.1);
+}
+.tilt-prism-typewriter{
+    font-family: "Tilt Prism", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings: 
+    "XROT" 0, 
+    "YROT" 0;
+}
