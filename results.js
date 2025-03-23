@@ -1,4 +1,3 @@
-
 let collegeName = localStorage.getItem("collegeName");
 let collegeCost = parseFloat(localStorage.getItem("collegeCost"));
 let roomAndBoards = parseFloat(localStorage.getItem("roomAndBoard"));
@@ -20,8 +19,8 @@ console.log("Latitude:", lats);
 console.log("Longitude:", longs);
 
 // Input from user
-//let salary = parseFloat(prompt("Enter your yearly salary after taxes:"));
-//let savings = parseFloat(prompt("Enter your savings for college:"));
+let salary = parseFloat(prompt("Enter your yearly salary after taxes:"));
+let savings = parseFloat(prompt("Enter your savings for college:"));
 
 // Function to calculate compound interest
 function calculateCompoundInterest(principal, rate, years) {
@@ -87,7 +86,7 @@ console.log("\nTotal loan to pay over 4 years:", totalLoanAmount.toFixed(2));
 let totalAmountToRepay = totalLoanAmount * Math.pow(1 + loanInterestRate, 4);
 console.log("Total amount to repay with interest:", totalAmountToRepay.toFixed(2));
 
-document.body.innerHTML += `<h2>${collegeName}</h2>`;
+document.body.innerHTML += `<h2 class="c2">${collegeName}</h2>`;
 document.body.innerHTML += `<p>Estimated Cost: $${collegeCost}</p>`;
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -98,10 +97,14 @@ document.addEventListener("DOMContentLoaded", function () {
             maxBounds: [[-90, -180], [90, 180]],
             maxBoundsViscosity: 1.0,
         }).setView([lats, longs], 12);
+        fetch("https://api.geoapify.com/v2/places?categories=accommodation.apartment,accommodation.hotel&filter=rect:-91.22411772054868,30.459057649110214,-91.11594403963763,30.3792897243003&limit=20&apiKey=YOUR_API_KEY")
+        .then(response => response.json())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
         var uni = L.marker([lats, longs]).addTo(map);
         uni.bindPopup(`<h2>${collegeName}</h2>`);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: 'Â© OpenStreetMap',
+            attribution: '© OpenStreetMap',
         }).addTo(map);
     } else {
         console.error("Latitude and Longitude are not available.");
