@@ -85,7 +85,6 @@ header{
     align-content: center;
     justify-content: center;
     background-color: white;
-    transition:1s;
 }
 
 .descText {
@@ -123,15 +122,11 @@ header{
     margin-top: 4vh;
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    max-height:300px;
-    overflow:hidden;
 }
 .row{
     display:flex;
     align-items:center;
     padding:10px 20px;
-    overflow-x:auto;
-    
 }
 
 .input-se   {
@@ -142,7 +137,6 @@ header{
     outline: 0;
     font-size:18px;
     color: mediumaquamarine;
-    margin-right:10px;
 
 }
 .search {
@@ -184,7 +178,6 @@ button .fa-solid{
     border-radius:3px;
     padding:15px 10px;
     cursor:pointer;
-    
 
 }
 .result-box p:hover{
@@ -209,6 +202,7 @@ button .fa-solid{
     display:inline-block;
     background-color: white;
 }
+
 .reviews2{
     position: relative;
     width: 400px;
@@ -271,14 +265,6 @@ button .fa-solid{
     from, to { border-color: transparent }
     50% { border-color: mediumaquamarine; }
 }
-
-
-
 .descBox:hover{
     transform:scale(1.1);
 }
-.fugaz-one-regular {
-    font-family: "Fugaz One", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-}  

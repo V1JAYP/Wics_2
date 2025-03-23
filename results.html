@@ -16,37 +16,35 @@
             <header>
             <h2 style="color: mediumaquamarine ;padding-left:10px;">TBD</h2>
             <nav class="navigation">
-                <a href="#">Home</a>
+                <a href="index.html">Home</a>
                 <a href="#">Reviews</a>
             </nav>    
             </header>
         </div>
     </header>
-    <div class="container">
-        <div class="map" id="map" style="height: 700px; width: 500px;">
-            
-    
-    
-    
-    
-        </div>
-    </div>
-    <header>
-        <div class="borderdiv fixed">
-            <header>
-            <h2 style="color: mediumaquamarine ;padding-left:10px;">TBD</h2>
-            <nav class="navigation">
-                <a href="#">Home</a>
-                <a href="#">Reviews</a>
-            </nav>    
-            </header>
-        </div>
-    </header>
-    <div class="container">
-        <div class="map" id="map" style="height: 700px; width: 500px;">
-        </div>
-    </div>
     <script src="results.js"></script>
+    
+    <div class="container">
+        <div class="map" id="map" style="height: 700px; width: 500px;">
+        </div>
+        <div class="buttons">
+            <form action="/action_page.php">
+                <label for="fname" >Scholarship:</label>
+                <input type="text" id="scholarship" name="fname" class="num2"><br><br>
+                <label for="lname">inflation rate:</label>
+                <input type="text" id="inflation" name="lname" class="num2"><br><br>
+                <label for="fname">Savings Amount:</label>
+                <input type="text" id="SavingAmount" name="fname" class="num2"><br><br>
+                <label for="lname">intrest rate:</label>
+                <input type="text" id="intrestrate" name="lname" class="num2"><br><br>
+                <label for="lname">Yearly Salary After Taxes:</label>
+                <input type="text" id="salary" name="lname" class="num2"><br><br>
+                <button class="submit" role="button">Submit</button>
+            </form>
+
+        </div>
+    </div>
+    
         <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     
     

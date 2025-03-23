@@ -18,10 +18,9 @@ console.log("Other Expenses:", otherExpense);
 console.log("Latitude:", lats);
 console.log("Longitude:", longs);
 
-// Input from user
-let salary = parseFloat(prompt("Enter your yearly salary after taxes:"));
-let savings = parseFloat(prompt("Enter your savings for college:"));
 
+
+document.getElementById("myElement").innerHTML = "<h1>This is a Heading</h1><p>This is a paragraph of text.</p>";
 // Function to calculate compound interest
 function calculateCompoundInterest(principal, rate, years) {
     return principal * Math.pow(1 + rate, years) - principal;

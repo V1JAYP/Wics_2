@@ -1,3 +1,4 @@
+/* styles.css */
 body{
     margin: 0;
     padding: 0;
@@ -19,7 +20,7 @@ header{
     z-index:99;
 }
 .navigation a{
-    display:fixed;
+    display:inline-block;
     padding:10px 20px;
     background:transparent;
     border: 2px solid #fff;
@@ -36,8 +37,7 @@ header{
 
 .navigation a:hover{
     background-color:white;
-    
-}    
+}     
 
 .borderdiv{
     background-color: white;;
@@ -52,10 +52,9 @@ header{
 }
 
 .map{
-    top:60px;
     position: relative;
-    width: 400px;
-    height:200px;
+    width: 500px;
+    height: 700px;
     background: transparent;
     border: 2px solid rgba(255, 255, 255, .5);
     border-radius: 20px;
@@ -63,11 +62,10 @@ header{
     box-shadow: 0 0 30px rgba(0,0,0,.5);
     display: flex;
     justify-content: center;
-    box-sizing: box-border;
-    display:flex;
+    box-sizing: border-box;
     overflow:auto;
     margin-left:30px;
-    margin-top: 30px;;
+    margin-top: 30px;
     display:inline-block;
     background-color: white;
 }
@@ -75,3 +73,55 @@ header{
     display:inline-block;
 
 }
+.buttons {
+    width: 250px; /* Set the width for the buttons container */
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display:inline-block;
+    vertical-align: top; /* Align to top */
+    margin-left: 20px; /* Add some space between the map and buttons */
+}
+.container {
+    display: flex; /* Use flexbox for layout */
+    margin-top: 80px; /* Add margin to avoid header overlap */
+}
+label{
+    display:block;
+    color: black;
+    font-weight:500;
+    margin: 5px 0;
+}
+.num2{
+    margin-top:10px;
+    margin-right:40px
+}
+.submit{
+    font-size: 16px;
+    font-weight: 200;
+    letter-spacing: 1px;
+    padding: 13px 20px 13px;
+    outline: 0;
+    border: 1px solid black;
+    cursor: pointer;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    margin-top: 20px;
+}
+
+.submit:after {
+    content: "";
+    background-color: #ffe54c;
+    width: 100%;
+    z-index: -1;
+    position: absolute;
+    height: 100%;
+    top: 7px;
+    left: 7px;
+    transition: 0.2s;
+}
+
