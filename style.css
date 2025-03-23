@@ -210,6 +210,7 @@ button .fa-solid{
     background-color: white;
 }
 
+
 .reviews2{
     position: relative;
     width: 400px;
@@ -278,12 +279,8 @@ button .fa-solid{
 .descBox:hover{
     transform:scale(1.1);
 }
-.tilt-prism-typewriter{
-    font-family: "Tilt Prism", sans-serif;
-    font-optical-sizing: auto;
+.fugaz-one-regular {
+    font-family: "Fugaz One", sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-variation-settings: 
-    "XROT" 0, 
-    "YROT" 0;
-}
+}  
