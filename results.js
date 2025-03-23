@@ -9,6 +9,7 @@ let scholarshipAmount = collegeCost * 0.1;
 let inflationRate = 0.028;
 let loanInterestRate = 0.0653;
 let savingsInterestRate = 0.0492;
+let geoapi = `7c6035dcefde4bac9fbcd7ac67ee375d`
 
 console.log("College Name:", collegeName);
 console.log("Estimated Cost:", collegeCost);
@@ -18,9 +19,10 @@ console.log("Other Expenses:", otherExpense);
 console.log("Latitude:", lats);
 console.log("Longitude:", longs);
 
+let salary = parseFloat(prompt("salary"));
+let savings = parseFloat(prompt("savings"));
 
-
-document.getElementById("myElement").innerHTML = "<h1>This is a Heading</h1><p>This is a paragraph of text.</p>";
+//document.getElementById("myElement").innerHTML = "<h1>This is a Heading</h1><p>This is a paragraph of text.</p>";
 // Function to calculate compound interest
 function calculateCompoundInterest(principal, rate, years) {
     return principal * Math.pow(1 + rate, years) - principal;
@@ -52,43 +54,52 @@ for (let year = 1; year <= 4; year++) {
         let loanForYear = adjustedCost;
         totalLoanAmount += loanForYear;
 
-        console.log(`You need to borrow ${loanForYear.toFixed(2)} for Year ${year}.`);
-        console.log(`Year ${year} Cost Breakdown:`);
-        console.log(`  Tuition: $${collegeCost.toFixed(2)}`);
-        console.log(`  Room and Board: $${roomAndBoards.toFixed(2)}`);
-        console.log(`  Books and Supplies: $${inflatedBooks.toFixed(2)}`);
-        console.log(`  Other Expenses: $${inflatedOther.toFixed(2)}`);
-        console.log(`  Scholarship: $${scholarshipAmount.toFixed(2)}`);
-        console.log(`  Total Cost: $${(collegeCost + roomAndBoards + inflatedBooks + inflatedOther - scholarshipAmount).toFixed(2)}`);
-        console.log(`  Available Funds: $${availableFunds.toFixed(2)}`);
-        console.log(`  Loan Amount: $${loanForYear.toFixed(2)}`);
+        document.body.innerHTML += `<p>You need to borrow ${loanForYear.toFixed(2)} for Year ${year}.`
+        document.body.innerHTML +=`<h2>Year ${year} Cost Breakdown:</h2>`
+        document.body.innerHTML +=`<p>  Tuition: $${collegeCost.toFixed(2)}</p>`
+        document.body.innerHTML +=`<p>  Room and Board: $${roomAndBoards.toFixed(2)}</p>`
+        document.body.innerHTML +=`<p>  Books and Supplies: $${inflatedBooks.toFixed(2)}</p>`
+        document.body.innerHTML +=`<p>  Other Expenses: $${inflatedOther.toFixed(2)}</p>`
+        document.body.innerHTML +=`<p>  Scholarship: $${scholarshipAmount.toFixed(2)}</p>`
+        document.body.innerHTML +=`<p>  Total Cost: $${(collegeCost + roomAndBoards + inflatedBooks + inflatedOther - scholarshipAmount).toFixed(2)}</p>`
+        document.body.innerHTML +=`<p>  Available Funds: $${availableFunds.toFixed(2)}</p>`
+        document.body.innerHTML +=`<p>  Loan Amount: $${loanForYear.toFixed(2)}</p>`
 
         savings += calculateCompoundInterest(savings, savingsInterestRate, 1);
     } else {
-        console.log(`No loan needed for Year ${year}. Your funds cover the cost.`);
-        console.log(`Year ${year} Cost Breakdown:`);
-        console.log(`  Tuition: $${collegeCost.toFixed(2)}`);
-        console.log(`  Room and Board: $${roomAndBoards.toFixed(2)}`);
-        console.log(`  Books and Supplies: $${inflatedBooks.toFixed(2)}`);
-        console.log(`  Other Expenses: $${inflatedOther.toFixed(2)}`);
-        console.log(`  Scholarship: $${scholarshipAmount.toFixed(2)}`);
-        console.log(`  Total Cost: $${(collegeCost + roomAndBoards + inflatedBooks + inflatedOther - scholarshipAmount).toFixed(2)}`);
-        console.log(`  Available Funds: $${availableFunds.toFixed(2)}`);
-        console.log(`  Loan Amount: $0.00`);
+        document.body.innerHTML += `<p>No loan needed for Year ${year}. Your funds cover the cost.</p>`;
+        document.body.innerHTML += `<h2>Year ${year} Cost Breakdown:</h2>`;
+        document.body.innerHTML += `<p>  Tuition: $${collegeCost.toFixed(2)}</p>`;
+        document.body.innerHTML += `<p>  Room and Board: $${roomAndBoards.toFixed(2)}</p>`;
+        document.body.innerHTML += `<p>  Books and Supplies: $${inflatedBooks.toFixed(2)}</p>`;
+        document.body.innerHTML += `<p>  Other Expenses: $${inflatedOther.toFixed(2)}</p>`;
+        document.body.innerHTML += `<p>  Scholarship: $${scholarshipAmount.toFixed(2)}</p>`;
+        document.body.innerHTML += `<p>  Total Cost: $${(collegeCost + roomAndBoards + inflatedBooks + inflatedOther - scholarshipAmount).toFixed(2)}</p>`;
+        document.body.innerHTML += `<p>  Available Funds: $${availableFunds.toFixed(2)}</p>`;
+        document.body.innerHTML += `<p>  Loan Amount: $0.00</p>`;        
 
         savings += calculateCompoundInterest(savings, savingsInterestRate, 1);
     }
 }
 
 // Total loan and interest after 4 years
-console.log("\nTotal loan to pay over 4 years:", totalLoanAmount.toFixed(2));
+document.body.innerHTML += `<p>Total loan to pay over 4 years: $${totalLoanAmount.toFixed(2)}</p>`;
 let totalAmountToRepay = totalLoanAmount * Math.pow(1 + loanInterestRate, 4);
-console.log("Total amount to repay with interest:", totalAmountToRepay.toFixed(2));
+document.body.innerHTML += `<p>Total amount to repay with interest: $${totalAmountToRepay.toFixed(2)}</p>`;
 
-document.body.innerHTML += `<h2 class="c2">${collegeName}</h2>`;
-document.body.innerHTML += `<p>Estimated Cost: $${collegeCost}</p>`;
+collegeNameElement = document.getElementById('college-name')
+//console.log(collegeNameElement)
+collegeNameElement.innerHTML = `<p>${collegeName}<p>`;
 
 document.addEventListener("DOMContentLoaded", function () {
+    var greenIcon = new L.Icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+      });
     if (lats && longs) {
         var map = L.map('map', {
             minZoom: 3,
@@ -96,14 +107,44 @@ document.addEventListener("DOMContentLoaded", function () {
             maxBounds: [[-90, -180], [90, 180]],
             maxBoundsViscosity: 1.0,
         }).setView([lats, longs], 12);
-        fetch("https://api.geoapify.com/v2/places?categories=accommodation.apartment,accommodation.hotel&filter=rect:-91.22411772054868,30.459057649110214,-91.11594403963763,30.3792897243003&limit=20&apiKey=YOUR_API_KEY")
-        .then(response => response.json())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
+        fetch(`https://api.geoapify.com/v2/places?categories=accommodation.apartment,accommodation.hotel&filter=circle:${longs},${lats},5000&bias=proximity:${longs},${lats}&limit=20&apiKey=${geoapi}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(result => {
+            console.log("Geoapify API Result:", result);
+            if (result.features && result.features.length > 0) {
+                result.features.forEach(feature => {
+                    const lontt = feature.geometry.coordinates[0];
+                    const lattt = feature.geometry.coordinates[1];
+                    const name = feature.properties.name || 'Place';
+                    const formattedAddress = feature.properties.formatted;
+    
+                    console.log("Name:", name);
+                    console.log("Latitude:", lattt); 
+                    console.log("Longitude:", lontt); 
+                    console.log("Formatted Address:", formattedAddress);
+                    if (typeof L !== 'undefined' && map) {
+                        L.marker([lattt, lontt], {icon: greenIcon})
+                        .addTo(map)
+                        .bindPopup(`<h3>${name}</h3><p>${formattedAddress}</p>`);
+                    }
+                });
+            }else{
+                console.log("Geoapify API returned no results.");
+            }
+    
+        })
+        .catch(error => {
+            console.error("Geoapify API Error:", error);
+        });
         var uni = L.marker([lats, longs]).addTo(map);
         uni.bindPopup(`<h2>${collegeName}</h2>`);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap',
+            attribution: 'Â© OpenStreetMap',
         }).addTo(map);
     } else {
         console.error("Latitude and Longitude are not available.");
