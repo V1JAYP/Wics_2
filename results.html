@@ -7,6 +7,9 @@
     
     <link rel="stylesheet" href="result.css"/>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Allan:wght@400;700&family=Audiowide&display=swap" rel="stylesheet">
     
 </head>
 <body>
@@ -14,40 +17,69 @@
     <header>
         <div class="borderdiv fixed">
             <header>
-            <h2 style="color: mediumaquamarine ;padding-left:10px;">TBD</h2>
+            <h2 style="color: mediumaquamarine; padding-left: 10px; font-family: 'Allan', cursive;">UniCost</h2>
             <nav class="navigation">
-                <a href="#">Home</a>
+                <a href="index.html">Home</a>
                 <a href="#">Reviews</a>
             </nav>    
             </header>
         </div>
     </header>
+
+    <div class="typewriter">
+        <h1 id="college-name" style="margin-top: 100px; text-align: center; font-size: 4em; font-family: 'Audiowide', cursive;"></h1>
+        <h2 style="margin-top: 100px; text-align: center; font-size: 2em; font-family: 'Allan', cursive;">Enter the values into the input field, salary and savings are mandatory</h2>
+    </div>
+    
     <div class="container">
         <div class="map" id="map" style="height: 700px; width: 500px;">
         </div>
+        <div class="buttons">
+            <form action="/action_page.php">
+                <label for="fname" style="font-family: 'Allan', cursive;">Scholarship:</label>
+                <input type="text" id="scholarship" name="fname" class="num2"><br><br>
+                <label for="lname" style="font-family: 'Allan', cursive;">Inflation rate:</label>
+                <input type="text" id="inflation" name="lname" class="num2"><br><br>
+                <label for="fname" style="font-family: 'Allan', cursive;">Savings Amount:</label>
+                <input type="text" id="SavingAmount" name="fname" class="num2"><br><br>
+                <label for="lname" style="font-family: 'Allan', cursive;">Interest rate:</label>
+                <input type="text" id="intrestrate" name="lname" class="num2"><br><br>
+                <label for="lname" style="font-family: 'Allan', cursive;">Yearly Salary After Taxes:</label>
+                <input type="text" id="salary" name="lname" class="num2"><br><br>
+                <button class="submit" role="button" style="font-family: 'Allan', cursive;">Submit</button>
+            </form>
+        </div>
+        <div class="result2">
+            <h1 id="college-name" style="font-family: 'Audiowide', cursive;"></h1>
+            <div style="text-align: center;">
+                <label style="font-family: 'Allan', cursive;">Results</label><br>
+                <div id="result-display">
+                </div>
+            </div>
+        </div>
     </div>
+    
     <script src="results.js"></script>
+<<<<<<< HEAD
     <script src="costcalc.js"></script>
         <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+=======
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+>>>>>>> 769905aa65ca46f66033e19559417df1b350dfa9
     
-    
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                var map = L.map('map', {
-                    minZoom: 3,
-                    maxZoom: 18,
-                    maxBounds: [[-90, -180], [90, 180]], // Restricts map panning
-                    maxBoundsViscosity: 1.0
-                }).setView([27.169802, 17.89216], 2);
-    
-                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: '© OpenStreetMap'
-                }).addTo(map);
-            });
-        </script>
-
-    
-    
-
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var map = L.map('map', {
+                minZoom: 3,
+                maxZoom: 18,
+                maxBounds: [[-90, -180], [90, 180]], // Restricts map panning
+                maxBoundsViscosity: 1.0
+            }).setView([27.169802, 17.89216], 2);
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap'
+            }).addTo(map);
+        });
+    </script>
 </body>
 </html>
