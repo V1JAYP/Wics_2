@@ -1,5 +1,5 @@
 let collegeName = localStorage.getItem("collegeName");
-let collegeCost = parseFloat(localStorage.getItem("collegeCost"));
+let collegeCost = parseFloat(localStorage.getItem("Cost"));
 let roomAndBoards = parseFloat(localStorage.getItem("roomAndBoard"));
 let booksAndSupplie = parseFloat(localStorage.getItem("booksAndSupplies"));
 let otherExpense = parseFloat(localStorage.getItem("otherExpenses"));
@@ -133,10 +133,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     const name = feature.properties.name || 'Place';
                     const formattedAddress = feature.properties.formatted;
     
-                    console.log("Name:", name);
-                    console.log("Latitude:", lattt); 
-                    console.log("Longitude:", lontt); 
-                    console.log("Formatted Address:", formattedAddress);
+               
                     if (typeof L !== 'undefined' && map) {
                         L.marker([lattt, lontt], {icon: greenIcon})
                         .addTo(map)

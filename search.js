@@ -58,7 +58,6 @@ searchButton.addEventListener("click", async () => {
   const encodedCollege = encodeURIComponent(query);
   
   const url = `https://api.data.gov/ed/collegescorecard/v1/schools?api_key=${CapiKey}&school.name=${encodedCollege}&fields=school.name,latest.cost.avg_net_price.public,latest.cost.avg_net_price.private,location.lat,location.lon,latest.cost.roomboard.oncampus,latest.cost.booksupply,latest.cost.otherexpense.oncampus`;
-  const a = `https://api.data.gov/ed/collegescorecard/v1/schools?api_key=g7FEYfAu065Ae41ee7Zd1XMk8gCDJQVVqfF6z5hN&school.name=LSU&fields=school.name,latest.cost.avg_net_price.public,latest.cost.avg_net_price.private,location.lat,location.lon,latest.cost.roomboard.oncampus,latest.cost.booksupply,latest.cost.otherexpense.oncampus`;
 
   try {
     const response = await fetch(url);
@@ -67,9 +66,7 @@ searchButton.addEventListener("click", async () => {
     const data = await response.json();
     if (data.results && data.results.length > 0) {
       const school = data.results[0];
-      
-      const costPublic = school["latest.cost.avg_net_price.public"] || "No cost found";
-      const costPrivate = school["latest.cost.avg_net_price.private"] || "No cost found";
+      const cost = school["latest.cost.avg_net_price.public"] || school["latest.cost.avg_net_price.private"];
       const roomAndBoard = school["latest.cost.roomboard.oncampus"] || "No data";
       const booksAndSupplies = school["latest.cost.booksupply"] || "No data";
       const otherExpenses = school["latest.cost.otherexpense.oncampus"] || "No data";
@@ -80,8 +77,7 @@ searchButton.addEventListener("click", async () => {
       localStorage.setItem("collegeName", school["school.name"]);
       localStorage.setItem("lat", lat);
       localStorage.setItem("long", long);
-      localStorage.setItem("collegeCostPublic", costPublic);
-      localStorage.setItem("collegeCostPrivate", costPrivate);
+      localStorage.setItem("Cost", cost);
       localStorage.setItem("roomAndBoard", roomAndBoard);
       localStorage.setItem("booksAndSupplies", booksAndSupplies);
       localStorage.setItem("otherExpenses", otherExpenses);
