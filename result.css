@@ -60,7 +60,8 @@ header{
     border-radius: 20px;
     backdrop-filter: blur(20px);
     box-shadow: 0 0 30px rgba(0,0,0,.5);
-    display: flex;
+    display:flex;
+    flex-wrap:wrap;
     justify-content: center;
     box-sizing: border-box;
     overflow:auto;
@@ -68,6 +69,7 @@ header{
     margin-top: 30px;
     display:inline-block;
     background-color: white;
+
 }
 .c2{
     display:inline-block;
@@ -84,6 +86,8 @@ header{
     margin-left: 30px;
     position: relative; /* For pseudo-elements */
     overflow: hidden; /* Clip any overflow from pseudo-elements */
+    display:flex;
+    flex-wrap:wrap;
 }
 
 .buttons::before {
@@ -141,6 +145,8 @@ header{
     transition: transform 0.2s, box-shadow 0.2s;
     width: calc(100% - 12px);
     margin-top: 20px;
+    display:flex;
+    flex-wrap:wrap;
 }
 
 .buttons .submit:hover {
@@ -150,6 +156,8 @@ header{
 .container {
     display: flex; /* Use flexbox for layout */
     margin-top: 80px; /* Add margin to avoid header overlap */
+    display:flex;
+    flex-wrap:wrap;
 }
 label{
     display:block;
@@ -175,6 +183,8 @@ label{
     -webkit-user-select: none;
     touch-action: manipulation;
     margin-top: 20px;
+    display:flex;
+    flex-wrap:wrap;
 }
 
 .submit:after {
@@ -200,6 +210,9 @@ label{
     margin-left: 30px; /* Same margin as buttons */
     position: relative;
     overflow: hidden;
+    margin-top:10px;
+    
+    
 }
 
 .result2::before {
